@@ -23,9 +23,12 @@ int main () {
 	}
 	// asking for a grid size and error checking
 
-	char board[ size ][ size ] = { '-' '-' '-' '-' '-' 
-		'-' '-' '-' '-' '-' '-' '-' '-' '-' '-' '-' '-' 
-			----------------------- } ;
+	char board[ size ][ size ] ;
+	for ( unsigned int i = 0 ; i < size ; i++ ) {
+		for ( unsigned int j = 0 ; j < size ; j++ ) {
+			board[ j ] = { '-' } ;
+		}
+	}
 	// builds the board AFTER accepting the size
 
 	for ( unsigned int i = 0 ; i < ( size * size ) ; i++ ) {
