@@ -20,6 +20,7 @@ int moveCount = 0 ;
 int board[ 25 ] ;
 // 2 will be an empty space, 1 will be Xs, and 0 will be Os.
 
+/*
 void printBoard() {
 	int counter ; 
 	for ( int i = 0 ; i < ( size * size ) ; i++ ) {
@@ -47,7 +48,7 @@ void printBoard() {
 		}
 		// formats for better readability
 	}
-}
+} */
 // The point of this function is to convert the array to a visual board.
 // You would think one should skip the step and just take the array in as
 //		chars of Xs and Os, but I tried that for no joke, A COUPLE OF HOURS
@@ -167,17 +168,17 @@ void winCondition() {
 	}
 	
 	if ( xWin == 1 ) {
-		cout << "Player X Won!\n" ;
+		cout << "X wins\n" ;
 		exit(0) ;
 	}
 	if ( oWin == 1 ) {
-		cout << "Player O Won!\n" ;
+		cout << "O wins\n" ;
 		exit(0) ;
 	}
 	if ( moveCount < ( size * size ) ) {
 	}
 	else {
-		cout << "Tie!\n" ; 
+		cout << "Tie\n" ; 
 		exit(0) ;
 	}
 }
@@ -185,37 +186,29 @@ void winCondition() {
 int main () {
 	int move ;
 	int turn ;
-	cout << "Enter a grid size (Options: 3, 4, 5): " ;
-	while ( ( size > 5 ) || ( size < 3 ) ) {
-		cin >> size ;
-	}
+	while ( cin >> size ) {
 	// asking for a grid size and error checking
 
 	while ( moveCount < ( size * size ) ) {
-		printBoard() ;
 		if ( ( move > ( size * size ) ) || ( move < 1 ) ) {
 			if ( moveCount == 0 ) {
 			}
 			else {
-				cout << "You have selected an invalid space. Please pick another.\n" ;
 				move-- ;
 				moveCount-- ;
 			}
 		}
 		// checks that the space is available for play
 			if ( ( moveCount % 2 ) == 1 ) {
-				cout << "Player X: " ;
 				cin >> move ;
 				turn = 2 ;
 			}	
 			if ( ( moveCount % 2 ) == 0 ) {
-				cout << "Player O: " ;
 				cin >> move ;
 				turn = 1 ;
 			}
 			// checks whose turn it is
 			if ( !( board[ ( move - 1 ) ] == 0 ) ) {
-				cout << "This space has already been filled. Please pick another.\n" ;
 				move-- ;
 			}
 			// verifies that the space is empty
@@ -225,6 +218,7 @@ int main () {
 			}
 			// if the space is empty, passes it on officially to the board and moveCount
 		winCondition() ;
+	}
 	}
 	return 0 ;
 }
